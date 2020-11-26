@@ -53,6 +53,11 @@
   border: 1px solid gray;
 }
 
+.App.dark, .App.dark .navbar,  .product-list.dark, .cart.dark {
+  background-color: #000000;
+  color: #fff;
+}
+
 .product img{
   width: 100%;
 }

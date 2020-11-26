@@ -1,16 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./Navbar/Navbar";
 import ProductList from "./Products/ProductList";
 import Cart from "./Cart/Cart";
 import data from "./data";
 import { useEffect, useState } from "react";
+import useCart from './useCart';
 
 const App = () => {
   const [products, setProducts] = useState([...data]);
   const [keyword, setKeyword] = useState("");
-  const [cartItems, setCartItems] = useState([]);
-
+  const {cartItems, addToCart, removeCartItem, handleCancel} = useCart([], products);
   useEffect(() => {
     const results = data.filter(
       (prodcut) =>
@@ -18,42 +17,6 @@ const App = () => {
     );
     setProducts(results);
   }, [keyword]);
-
-  const addToCart = (id) => {
-    const item = products.find((product) => product.id === id);
-    setCartItems((items) => {
-      const itemIndex = items.findIndex((currentItem) => currentItem.id === id);
-      if (itemIndex === -1) {
-        return [
-          ...items,
-          {
-            ...item,
-            quantity: 1,
-          },
-        ];
-      } else {
-        return items.map((currentItem) =>
-          currentItem.id === id
-            ? {
-                ...item,
-                quantity: parseInt(currentItem.quantity) + 1,
-              }
-            : currentItem
-        );
-      }
-    });
-  };
-
-  const removeCartItem = id => {
-    setCartItems(items => items.filter((item) => item.id !== id ));
-  };
-
-  const handleCancel = () => {
-    const res = window.confirm("are you sure?");
-    if(res) {
-      setCartItems([]);
-    }
-  }
 
   return (
     <div className="App">

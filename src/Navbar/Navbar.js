@@ -14,7 +14,7 @@ const Navbar = ({setKeyword}) => {
           <div className="navbar">
             <span>My Shop {dark ? 'Dark' : 'Light'}</span>  
             <input type="text" placeholder="Search Products" onChange={handleChange}/>
-            <button onClick={toggle}>Change Color</button>
+            <button onClick={toggle}>Change Color Mode</button>
           </div>
         )}
       </ThemeContext.Consumer>

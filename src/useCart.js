@@ -1,5 +1,4 @@
 import {useState } from "react";
-
 const useCart = (init, products) => {
     const [cartItems, setCartItems] = useState(init);
   

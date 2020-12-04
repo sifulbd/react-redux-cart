@@ -12,7 +12,7 @@ const Navbar = ({setKeyword}) => {
       {
         value => (
           <div className="navbar">
-            <span>My Digital Shop {dark ? 'Dark' : 'Light'}</span>  
+            <span>My Digital Shop | Mode: {dark ? 'Dark' : 'Light'}</span>  
             <input type="text" placeholder="Search Products" onChange={handleChange}/>
             <button onClick={toggle}>Change Color Mode</button>
           </div>

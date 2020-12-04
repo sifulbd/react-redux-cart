@@ -1,5 +1,4 @@
 import {useState } from "react";
-
 const useCart = (init, products) => {
     const [cartItems, setCartItems] = useState(init);
   
@@ -8,7 +7,7 @@ const useCart = (init, products) => {
       setCartItems((items) => {
         const itemIndex = items.findIndex((currentItem) => currentItem.id === id);
         if (itemIndex === -1) {
-          return [
+          return [ 
             ...items,
             {
               ...item,

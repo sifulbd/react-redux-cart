@@ -5,8 +5,8 @@ const Navbar = ({setKeyword}) => {
   const handleChange = (e) => {
     setKeyword(e.target.value)
   }
-
   const {dark, toggle} = useContext(ThemeContext);
+
     return (
       <ThemeContext.Consumer>
       {

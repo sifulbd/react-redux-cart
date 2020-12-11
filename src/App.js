@@ -23,7 +23,7 @@ const App = () => {
 
   const toggleDark = () => {
     setDark(isDark => !isDark)
-  }
+  } 
   return (
     <ThemeContext.Provider value={{dark: dark, toggle: toggleDark }}>
       <div className={`App ${ dark ? 'dark' : 'light'}`}>

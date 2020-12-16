@@ -27,7 +27,7 @@ const App = () => {
   return (
     <ThemeContext.Provider value={{dark: dark, toggle: toggleDark }}>
       <div className={`App ${ dark ? 'dark' : 'light'}`}>
-        <Navbar setKeyword={setKeyword}></Navbar>
+        <Navbar setKeyword={setKeyword}> </Navbar>
         <ProductList addToCart={addToCart} products={products}></ProductList>
         <Cart cartItems={cartItems} removeCartItem={removeCartItem} handleCancel={handleCancel}></Cart>
       </div>

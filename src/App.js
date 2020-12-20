@@ -19,7 +19,7 @@ const App = () => {
         prodcut.title.includes(keyword) || prodcut.brand.includes(keyword)
     );
     setProducts(results);
-  }, [keyword]); 
+  }, [keyword]);  
 
   const toggleDark = () => {
     setDark(isDark => !isDark)

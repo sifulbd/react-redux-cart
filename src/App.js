@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import useCart from './useCart';
 import ThemeContext from './ThemeContext';
 
+import TextLoop from 'react-text-loop';
+
 
 const App = () => {
   const [products, setProducts] = useState([...data]);
@@ -25,10 +27,19 @@ const App = () => {
     setDark(isDark => !isDark)
   }
 
+
   return (
+
     <ThemeContext.Provider value={{dark: dark, toggle: toggleDark }}>
       <div className={`App ${ dark ? 'dark' : 'light'}`}>
         <Navbar setKeyword={setKeyword}></Navbar>
+        <div>
+          <TextLoop>
+            <span>Trade fast</span>
+            <span>another</span>
+            <span>ano no anotherß</span>
+          </TextLoop>
+        </div>
         <ProductList addToCart={addToCart} products={products}></ProductList>
         <Cart cartItems={cartItems} removeCartItem={removeCartItem} handleCancel={handleCancel}></Cart>
       </div>

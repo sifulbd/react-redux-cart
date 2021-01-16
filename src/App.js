@@ -21,13 +21,17 @@ const App = () => {
         prodcut.title.includes(keyword) || prodcut.brand.includes(keyword)
     );
     setProducts(results);
-  }, [keyword]);
+  }, [keyword]);  
 
   const toggleDark = () => {
     setDark(isDark => !isDark)
+<<<<<<< HEAD
   }
 
 
+=======
+  } 
+>>>>>>> 2043dd88ee32dac6f298c077733f10b0b6426ecd
   return (
 
     <ThemeContext.Provider value={{dark: dark, toggle: toggleDark }}>

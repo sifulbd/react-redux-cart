@@ -12,7 +12,7 @@ const useCart = (init, products) => {
             {
               ...item,
               quantity: 1,
-            },
+            }, 
           ];
         } else {
           return items.map((currentItem) =>
@@ -27,6 +27,7 @@ const useCart = (init, products) => {
       });
     };
   
+    // 
     const removeCartItem = id => {
       setCartItems(items => items.filter((item) => item.id !== id ));
     };

@@ -22,7 +22,7 @@ const useCart = (init, products) => {
                   quantity: parseInt(currentItem.quantity) + 1,
                 }
               : currentItem
-          );
+          ); 
         }
       });
     };

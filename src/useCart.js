@@ -10,7 +10,7 @@ const useCart = (init, products) => {
           return [ 
             ...items,
             {
-              ...item,
+              ...item, 
               quantity: 1,
             }, 
           ];
@@ -27,7 +27,7 @@ const useCart = (init, products) => {
       });
     };
   
-    
+    //
     const removeCartItem = id => {
       setCartItems(items => items.filter((item) => item.id !== id ));
     };

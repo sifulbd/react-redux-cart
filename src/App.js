@@ -4,51 +4,67 @@ import ProductList from "./Products/ProductList";
 import Cart from "./Cart/Cart";
 import data from "./data";
 import { useEffect, useState } from "react";
-import useCart from './useCart';
-import ThemeContext from './ThemeContext';
-
-import TextLoop from 'react-text-loop';
-
+import useCart from "./useCart";
+import ThemeContext from "./ThemeContext";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import TextLoop from "react-text-loop";
+import Checkout from "./Component/Checkout/Checkout";
 
 const App = () => {
-  const [products, setProducts] = useState([...data]);
-  const [keyword, setKeyword] = useState("");
-  const [dark, setDark] = useState(true);
-  const {cartItems, addToCart, removeCartItem, handleCancel} = useCart([], products);
-  useEffect(() => {
-    const results = data.filter(
-      (prodcut) =>
-        prodcut.title.includes(keyword) || prodcut.brand.includes(keyword)
+    const [products, setProducts] = useState([...data]);
+    const [keyword, setKeyword] = useState("");
+    const [dark, setDark] = useState(true);
+    const { cartItems, addToCart, removeCartItem, handleCancel } = useCart(
+        [],
+        products
     );
-    setProducts(results);
-  }, [keyword]);  
+    useEffect(() => {
+        const results = data.filter(
+            (prodcut) =>
+                prodcut.title.includes(keyword) ||
+                prodcut.brand.includes(keyword)
+        );
+        setProducts(results);
+    }, [keyword]);
 
-  const toggleDark = () => {
-    setDark(isDark => !isDark)
-<<<<<<< HEAD
-  }
+    const toggleDark = () => {
+        setDark((isDark) => !isDark);
+    };
 
+    const Home = () => {
+        return (
+            <>
+                <ProductList
+                    addToCart={addToCart}
+                    products={products}
+                ></ProductList>
 
-=======
-  } 
->>>>>>> 2043dd88ee32dac6f298c077733f10b0b6426ecd
-  return (
+                <Cart
+                    cartItems={cartItems}
+                    removeCartItem={removeCartItem}
+                    handleCancel={handleCancel}
+                ></Cart>
+            </>
+        );
+    };
 
-    <ThemeContext.Provider value={{dark: dark, toggle: toggleDark }}>
-      <div className={`App ${ dark ? 'dark' : 'light'}`}>
-        <Navbar setKeyword={setKeyword}></Navbar>
-        <div>
-          <TextLoop>
-            <span>Trade fast</span>
-            <span>another</span>
-            <span>ano no anotherß</span>
-          </TextLoop>
-        </div>
-        <ProductList addToCart={addToCart} products={products}></ProductList>
-        <Cart cartItems={cartItems} removeCartItem={removeCartItem} handleCancel={handleCancel}></Cart>
-      </div>
-    </ThemeContext.Provider>
-  );
+    return (
+        <ThemeContext.Provider value={{ dark: dark, toggle: toggleDark }}>
+            <div className={`App ${dark ? "dark" : "light"}`}>
+                <Navbar setKeyword={setKeyword}></Navbar>
+                <Router>
+                    <Switch>
+                        <Route path="/checkout">
+                            <Checkout></Checkout>
+                        </Route>
+                        <Route path="/">
+                            <Home />
+                        </Route>
+                    </Switch>
+                </Router>
+            </div>
+        </ThemeContext.Provider>
+    );
 };
 
 export default App;
